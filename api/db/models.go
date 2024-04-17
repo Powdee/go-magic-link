@@ -6,11 +6,14 @@ package db
 
 import (
 	"database/sql"
+
+	"github.com/google/uuid"
 )
 
 type User struct {
-	ID              int32          `json:"id"`
+	ID              uuid.UUID      `json:"id"`
 	Email           string         `json:"email"`
+	Username        sql.NullString `json:"username"`
 	MagicToken      sql.NullString `json:"magic_token"`
 	TokenExpiration sql.NullTime   `json:"token_expiration"`
 }
