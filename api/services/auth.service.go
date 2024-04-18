@@ -6,7 +6,7 @@ import (
 	"errors"
 	"log"
 	"net/http"
-	"resons/v0/api/api/db"
+	"resons/api/api/db"
 
 	"github.com/labstack/echo/v4"
 

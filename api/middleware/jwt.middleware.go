@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"resons/v0/api/api/types"
+	"resons/api/api/types"
 
 	"github.com/golang-jwt/jwt/v5"
 	echojwt "github.com/labstack/echo-jwt/v4"

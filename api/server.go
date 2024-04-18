@@ -4,10 +4,9 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
-	"net/http"
-	"resons/v0/api/api/controllers"
-	"resons/v0/api/api/db"
-	"resons/v0/api/api/middleware"
+	"os"
+	"resons/api/api/controllers"
+	"resons/api/api/db"
 
 	"github.com/labstack/echo/v4"
 	_ "github.com/lib/pq"
@@ -16,10 +15,10 @@ import (
 func initDB() *db.Queries {
 	var err error
 	// todo: use env variables
-	username := "erikkurjak" // os.Getenv("DB_USER")
-	password := "w!ndow11"   // os.Getenv("DB_PASSWORD")
-	hostname := "localhost"  // os.Getenv("DB_HOST")
-	dbname := "momenify"     // os.Getenv("DB_NAME")
+	username := os.Getenv("DB_USER")
+	password := os.Getenv("DB_PASSWORD")
+	hostname := os.Getenv("DB_HOST")
+	dbname := os.Getenv("DB_NAME")
 	fmt.Println(username, password, hostname, dbname)
 	// Create the connection string
 	connStr := fmt.Sprintf("postgres://%s:%s@%s/%s?sslmode=disable", username, password, hostname, dbname)
@@ -43,12 +42,10 @@ func main() {
 	queries := initDB()
 
 	authController := controllers.NewAuthController(queries)
-	jwtMiddleware := middleware.JWTMiddleware("your-very-secret-key")
+	// jwtMiddleware := middleware.JWTMiddleware("your-very-secret-key")
 
 	e.POST("/auth/login", authController.HandleLogin)
 	e.GET("/auth/verify", authController.HandleVerify)
-
-	e.POST("/events/user/:userId/upload", func(c echo.Context) error { return c.String(http.StatusOK, "authenticated") }, jwtMiddleware)
 
 	e.Logger.Fatal(e.Start(":8080"))
 }

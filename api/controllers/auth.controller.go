@@ -2,9 +2,9 @@ package controllers
 
 import (
 	"net/http"
-	"resons/v0/api/api/db"
-	"resons/v0/api/api/services"
-	"resons/v0/api/api/types"
+	"resons/api/api/db"
+	"resons/api/api/services"
+	"resons/api/api/types"
 
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/labstack/echo/v4"

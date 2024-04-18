@@ -1,4 +1,4 @@
-module resons/v0/api
+module resons/api
 
 go 1.22.0
 
