@@ -1,8 +1,8 @@
 # Go Magic Link
 
-![Go](./Go.png)
+<img src="./Go.png" alt="go" width="200"/>
 
-`go-magic-link` is a Go implementation of magic links authentication using the Echo framework with JWT utilities.
+`go-magic-link` is a Go implementation of magic links authentication using the Echo framework with JWT utilities. This is not a Go package, only an example on how to do magic link authentication with `Go`.
 
 ## Features
 
@@ -16,12 +16,12 @@
 go run api/server.go
 ```
 
-## Endpoints
+##  Endpoints
 
 `/auth/login`: Endpoint for generating magic links.
 `/auth/verify`: Endpoint for verifying the magic link and authenticating the user.
 
-## Configuration
+## Configuration
 
 `SecretKey`: The secret key used for JWT token signing.
 `TokenExpiration`: Expiration time for the JWT token.
